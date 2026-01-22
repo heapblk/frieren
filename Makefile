@@ -29,6 +29,14 @@ install: release
 	@echo "installing..."
 	cd $(RELEASE_DIR) && make install
 
+debug_test: debug
+	@echo "running tests in debug..."
+	cd $(DEBUG_DIR) && make tests && ./tests
+
+release_test: release
+	@echo "running tests in release..."
+	cd $(RELEASE_DIR) && make tests && ./tests
+
 test: 	install_local
 	@echo "running tests in debug..."
 	cd $(DEBUG_DIR) && make templ_test && ctest
